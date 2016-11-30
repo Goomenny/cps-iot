@@ -15,7 +15,7 @@ var board = new firmata.Board("/dev/ttyACM0", function(){ // ACM Abstract Contro
 });
 
 function handler(req, res) {
-fs.readFile(__dirname + "/example16.html",
+fs.readFile(__dirname + "/example17.html",
 function (err, data) {
 if (err) {
 res.writeHead(500, {"Content-Type": "text/plain"});
@@ -97,7 +97,7 @@ function controlAlgorithm (parameters) {
         if(pwm < -pwmLimit) {pwm = -pwmLimit}; // to limit the value for pwm / negative
         if (pwm > 0) {board.digitalWrite(2,1); board.digitalWrite(4,0);}; // določimo smer če je > 0
         if (pwm < 0) {board.digitalWrite(2,0); board.digitalWrite(4,1);}; // določimo smer če je < 0
-        board.analogWrite(3, Math.abs(pwm)+20);
+        board.analogWrite(3, Math.round(Math.abs(pwm+20)));
 
     }
     
@@ -112,7 +112,7 @@ function controlAlgorithm (parameters) {
       if(pwm < -pwmLimit) {pwm = -pwmLimit}; // to limit the value for pwm / negative
       if (pwm > 0) {board.digitalWrite(2,1); board.digitalWrite(4,0);}; // določimo smer če je > 0
       if (pwm < 0) {board.digitalWrite(2,0); board.digitalWrite(4,1);}; // določimo smer če je < 0
-      board.analogWrite(3, Math.abs(pwm));   
+      board.analogWrite(3, Math.round(Math.abs(pwm)));
             
     }
     
@@ -127,7 +127,7 @@ function controlAlgorithm (parameters) {
       if(pwm < -pwmLimit) {pwm = -pwmLimit}; // to limit the value for pwm / negative
       if (pwm > 0) {board.digitalWrite(2,1); board.digitalWrite(4,0);}; // določimo smer če je > 0
       if (pwm < 0) {board.digitalWrite(2,0); board.digitalWrite(4,1);}; // določimo smer če je < 0
-      board.analogWrite(3, Math.abs(pwm));   
+      board.analogWrite(3, Math.round(Math.abs(pwm)));  
             
     }
 };
