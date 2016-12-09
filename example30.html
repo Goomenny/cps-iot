@@ -71,12 +71,11 @@ var flag=0;
 var output    = document.getElementById('output');
 
 function left () {
- // socket.emit("left", 1);
-  socket.emit("startControlAlgorithm");
-// if (flag==0) {document.getElementById("buttonLeft").innerText = "Change direction to left";
-//   flag=1;
-// }
-// else {document.getElementById("buttonLeft").innerText = "Change direction to right"; flag=0;}
+ //socket.emit("left", 1);
+  
+if (flag==0) {document.getElementById("buttonLeft").innerText = "Change direction to left";
+  flag=1; socket.emit("startControlAlgorithm"); }
+  else {document.getElementById("buttonLeft").innerText = "Change direction to right"; flag=0; socket.emit("startControlAlgorithm1");}
 }
 
 function center () {
